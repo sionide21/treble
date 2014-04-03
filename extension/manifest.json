@@ -3,7 +3,7 @@
   "name" : "Treble",
   "version" : "1.0.0",
 
-  "description" : "Bookmark a webpage to a trello board.",
+  "description" : "Bookmark webpages to a Trello board.",
   "icons": {
   },
   "background" : {
