@@ -42,5 +42,11 @@ loadBoards(function(boards) {
 
 $("FORM").submit(function() {
     localStorage.currentList = select.val();
+    Trello.post("lists/" + select.val() + "/cards", {name: title.val()}, function(card) {
+        chrome.tabs.getSelected(function(tab) {
+            Trello.post("cards/" + card.id + "/attachments", {url: tab.url});
+            chrome.tabs.create({ url: card.url });
+        });
+    });
     return false;
 });
