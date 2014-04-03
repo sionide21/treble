@@ -3,3 +3,6 @@ input[type="text"] {
     font-size: 14px;
 }
 
+select {
+    max-width: 240px;
+}
