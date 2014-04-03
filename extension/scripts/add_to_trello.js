@@ -40,7 +40,7 @@ loadBoards(function(boards) {
     }
 });
 
-$("FORM").submit(function() {
+$("FORM").one("submit", function() {
     localStorage.currentList = select.val();
     Trello.post("lists/" + select.val() + "/cards", {name: title.val()}, function(card) {
         chrome.tabs.getSelected(function(tab) {
