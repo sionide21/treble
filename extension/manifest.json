@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+  "name" : "Treble",
+  "version" : "1.0.0",
+
+  "description" : "Bookmark a webpage to a trello board.",
+  "icons": {
+  },
+  "background" : {
+    "scripts": ["scripts/background.js"]
+  },
+  "browser_action": {
+      "default_icon": {
+      },
+      "default_title": "Add to Trello",
+      "default_popup": "add_to_trello.html"
+  },
+  "web_accessible_resources": [
+    "authorize.html"
+  ],
+  "permissions": [
+    "activeTab",
+    "https://api.trello.com/"
+  ]
+}
