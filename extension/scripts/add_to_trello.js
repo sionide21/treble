@@ -27,17 +27,26 @@ function loadBoards(callback) {
         });
     }
 }
-loadBoards(function(boards) {
-    boards.forEach(function(board) {
-        var group = $("<optgroup>", {label: board.name});
-        board.lists.forEach(function(list) {
-            group.append($("<option>", {value: list.id}).text(list.name));
+
+function load() {
+    loadBoards(function(boards) {
+        boards.forEach(function(board) {
+            var group = $("<optgroup>", {label: board.name});
+            board.lists.forEach(function(list) {
+                group.append($("<option>", {value: list.id}).text(list.name));
+            });
+            select.append(group);
         });
-        select.append(group);
+        if (localStorage.currentList) {
+            select.val(localStorage.currentList);
+        }
     });
-    if (localStorage.currentList) {
-        select.val(localStorage.currentList);
-    }
+}
+load();
+
+$('A[href="#refresh"]').one("click", function() {
+    delete localStorage.boards;
+    load();
 });
 
 $("FORM").one("submit", function() {
