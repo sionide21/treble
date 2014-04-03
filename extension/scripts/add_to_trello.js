@@ -30,6 +30,7 @@ function loadBoards(callback) {
 
 function load() {
     loadBoards(function(boards) {
+        select.children().slice(1).remove();
         boards.forEach(function(board) {
             var group = $("<optgroup>", {label: board.name});
             board.lists.forEach(function(list) {
