@@ -1,6 +1,11 @@
 chrome.browserAction.setBadgeText({text: ""});
 Trello.authorize({interactive: false});
 if (!Trello.authorized()) {
+    reauth();
+}
+
+function reauth() {
+    Trello.deauthorize();
     chrome.tabs.create({ url: "authorize.html" });
 }
 
@@ -24,7 +29,7 @@ function loadBoards(callback) {
         Trello.get("members/my/boards", {lists: "open"}, function(boards) {
             localStorage.boards = JSON.stringify(boards);
             callback(boards);
-        });
+        }, reauth);
     }
 }
 
@@ -57,6 +62,6 @@ $("FORM").one("submit", function() {
             Trello.post("cards/" + card.id + "/attachments", {url: tab.url});
             chrome.tabs.create({ url: card.url });
         });
-    });
+    }, reauth);
     return false;
 });
