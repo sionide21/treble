@@ -5,6 +5,8 @@
 
   "description" : "Bookmark webpages to a Trello board.",
   "icons": {
+    "128": "icons/logo128.png",
+    "64": "icons/logo64.png"
   },
   "background" : {
     "scripts": ["scripts/background.js"]
